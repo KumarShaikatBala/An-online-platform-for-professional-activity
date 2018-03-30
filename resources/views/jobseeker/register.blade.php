@@ -7,6 +7,15 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="login-block">
                     <img src="assets/img/logo.png" alt="">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ol>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ol>
+                        </div>
+                    @endif
                     <h1>Job Seeker Register</h1>
                     {!! Form::open(['route' =>'job_seeker-store','class'=>'','method' => 'post']) !!}
                     {{ csrf_field() }}

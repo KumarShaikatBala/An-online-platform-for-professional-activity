@@ -23,6 +23,12 @@ class JobseekerController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' =>'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
         if($request->password_confirmation==$request->password){
             if( jobseeker::create([
                 'name' => $request->name,

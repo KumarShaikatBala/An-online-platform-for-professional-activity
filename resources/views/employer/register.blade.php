@@ -8,6 +8,15 @@
                 <div class="login-block">
                     <img src="assets/img/logo.png" alt="">
                     <h1>Employer Register</h1>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ol>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ol>
+                        </div>
+                    @endif
                     {!! Form::open(['route' =>'employer-store','class'=>'','method' => 'post']) !!}
                     {{ csrf_field() }}
                         <div class="form-group">
